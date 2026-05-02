@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Send, Vote, UserPlus, FileText, MapPin, Sparkles, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { chat } from "@/server/chat.functions";
 import heroImg from "@/assets/hero-elections.jpg";
 
 export const Route = createFileRoute("/")({
@@ -59,8 +58,19 @@ function Index() {
       setInput("");
       setLoading(true);
       try {
-        const res = await chat({ data: { message: trimmed } });
-        setMessages((m) => [...m, { role: "assistant", content: res.response }]);
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: trimmed }),
+        });
+
+        const data = (await res.json()) as { response?: string; error?: string };
+        const response = data.response;
+        if (!res.ok || !response) {
+          throw new Error(data.error || "Chat request failed");
+        }
+
+        setMessages((m) => [...m, { role: "assistant", content: response }]);
       } catch (err) {
         console.error(err);
         setMessages((m) => [
