@@ -65,11 +65,12 @@ function Index() {
         });
 
         const data = (await res.json()) as { response?: string; error?: string };
-        if (!res.ok || !data.response) {
+        const response = data.response;
+        if (!res.ok || !response) {
           throw new Error(data.error || "Chat request failed");
         }
 
-        setMessages((m) => [...m, { role: "assistant", content: data.response }]);
+        setMessages((m) => [...m, { role: "assistant", content: response }]);
       } catch (err) {
         console.error(err);
         setMessages((m) => [
