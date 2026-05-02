@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { SYSTEM_PROMPT, getFallbackResponse } from "./logic";
+import { SYSTEM_PROMPT, getFallbackResponse } from "./logic.server";
 
 const ChatInput = z.object({
   message: z.string().min(1).max(2000),
