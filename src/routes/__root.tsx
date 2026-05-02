@@ -29,14 +29,18 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "VoteAssistAI" },
+      { name: "description", content: "VoteAssistAI helps Tamil voters in India find polling info, candidate details, and routes using Google Maps and Gemini for Lok Sabha and Tamil Nadu elections." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "VoteAssistAI" },
+      { property: "og:description", content: "VoteAssistAI helps Tamil voters in India find polling info, candidate details, and routes using Google Maps and Gemini for Lok Sabha and Tamil Nadu elections." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "VoteAssistAI" },
+      { name: "twitter:description", content: "VoteAssistAI helps Tamil voters in India find polling info, candidate details, and routes using Google Maps and Gemini for Lok Sabha and Tamil Nadu elections." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/adf4cec4-cf1c-45e6-a365-4a88d809871a" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/adf4cec4-cf1c-45e6-a365-4a88d809871a" },
     ],
     links: [
       {
