@@ -3,7 +3,7 @@ import {
   classifyQuery,
   getFallbackResponse,
   fallbackResponses,
-} from "../src/server/logic.server";
+} from "../src/lib/election-logic";
 
 describe("Elections Assistant logic", () => {
   it("classifies 'How to vote?' as how_to_vote", () => {
