@@ -1,11 +1,20 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { SYSTEM_PROMPT, getFallbackResponse } from "../src/lib/election-logic";
+
+type VercelRequestLike = {
+  method?: string;
+  body?: { message?: unknown };
+};
+
+type VercelResponseLike = {
+  setHeader: (name: string, value: string) => void;
+  status: (code: number) => { json: (body: unknown) => void };
+};
 
 type GeminiResponse = {
   candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
 };
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: VercelRequestLike, res: VercelResponseLike) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ error: "Method not allowed" });
